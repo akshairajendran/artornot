@@ -1,0 +1,88 @@
+@import url('http://fonts.googleapis.com/css?family=');
+@charset "UTF-8";
+/* CSS Document */
+html {
+	height:100%;
+}
+
+/* Initial Body */
+body {
+	left:0;
+	margin:0;
+	overflow:hidden;
+	position:relative;
+	height:100%;
+}
+
+/* Initial Menu */
+
+.nav {
+	background-color:#FFFBF0;
+	left: -285px; /*start off behind the scenes */
+	height: 100%;
+	position:fixed;
+	width: 285px;
+}
+
+
+/* styling */
+
+.icon-menu {
+	color:#FFF;
+	cursor: pointer;
+	font-family: 'Avenir', sans-serif;
+	font-size:16px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-top:-10px;
+	width:70px;
+}
+
+
+.maintext {
+	font-family:'Avenir', sans-serif;
+	color:#000;
+	margin-left:50px;
+}
+
+.footer {
+	font-family:'Avenir',sans-serif;
+	position: absolute;
+	bottom:0;
+}
+
+.footer p {
+	font-size:14px;
+	color:#000
+}
+
+/* format menu */
+
+.nav ul {
+	list-style:none;
+	margin:0;
+	padding-top:0px;
+	position:relative;
+	top:20px;
+	left:0px;
+	padding-left:0px;
+	border-top: #A0A0A4 solid 1px;
+}
+
+.nav li {
+	font-family:'Avenir',sans-serif;
+	padding-bottom: 3px;
+	padding-left:20px;
+	padding-top:3px;
+	border-bottom: #A0A0A4 solid 1px; 
+}
+
+.nav a {
+	color:#000;
+	font-size:14px;
+	text-decoration:none;
+}
+
