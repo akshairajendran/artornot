@@ -1,0 +1,2 @@
+service: artornot
+runtime: python37
