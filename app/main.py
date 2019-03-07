@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 MODEL_PATH = os.path.dirname(os.path.abspath(__file__))
 learn = load_learner(MODEL_PATH)
+artists = [(" ").join([s.capitalize() for s in a.split("_")]) for a in learn.data.classes]
 
 @app.route('/')
 def index(data=[], error=None, image_url=None):
@@ -30,7 +31,8 @@ def index(data=[], error=None, image_url=None):
       except Exception as e:
         error = repr(e)
 
-    return render_template('index.html', data=data, error=error, image_url=image_url, pred_str=pred_str, pred_pct=pred_pct)
+    return render_template('index.html', data=data, error=error, image_url=image_url, 
+                                         pred_str=pred_str, pred_pct=pred_pct, artists=artists)
 
 @app.route('/result', methods=['POST'])
 def result():

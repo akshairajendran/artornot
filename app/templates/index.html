@@ -13,7 +13,7 @@
 <body>
     <div class="jumbotron">
         <div class="row">
-            <div class="maintext col-md-5">
+            <div class="maintext col-md-8">
                 <h1>Art or Not?</h1>
                 <form class="form-inline" method="POST" action="{{ url_for('result') }}">
                     <div class="input-text">
@@ -21,6 +21,16 @@
                     </div>
                     <button type="submit" class="btn">Go</button>
                 </form>
+            </div>
+            <div class="maintext col-md-3">
+                <h4>Supported artists:</h4>
+                {% for artist in artists %}
+                    <p>{{ artist }}<p>
+                {% endfor %}
+                <br><br>
+                <p>Please submit a link to an image by one of the currently supported artists. Submitting
+                   a link by an artist not currently supported will result in an erroneous result.
+                </p>
             </div>
         </div>
         <br><br>
@@ -30,7 +40,7 @@
                     <p>Got error, please check URL and try again</p>
                 {% else %}
                     {% if image_url %}
-                        <img src="{{ image_url }}" width="200" height="200">
+                        <img src="{{ image_url }}" width="400" height="400">
                         <br><br>
                         <p>There is a {{ pred_pct }}% chance that is by {{ pred_str }}<p>
                     {% endif %}
