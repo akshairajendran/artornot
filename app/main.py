@@ -1,22 +1,36 @@
 # [START gae_python37_app]
 from flask import Flask, flash, redirect, render_template, request, url_for
-from PIL import Image
 import requests
 from io import BytesIO
+import os
+import matplotlib as mpl
+mpl.use('TkAgg')
+from fastai.vision import *
 
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
 
+MODEL_PATH = os.path.dirname(os.path.abspath(__file__))
+learn = load_learner(MODEL_PATH)
 
 @app.route('/')
 def index(data=[], error=None, image_url=None):
     """Returns index page"""
+    pred_str = None
+    pred_pct = 0
     if image_url:
-      response = requests.get(image_url)
-      img = Image.open(BytesIO(response.content))
-    return render_template('index.html', data=data, error=error, image_url=image_url)
+      try:
+        response = requests.get(image_url)
+        img = open_image(BytesIO(response.content))
+        pred_class,pred_idx,outputs = learn.predict(img)
+        pred_str = (" ").join([s.capitalize() for s in pred_class.__str__().split("_")])
+        pred_pct = round(float(outputs[pred_idx]),3) * 100
+      except Exception as e:
+        error = repr(e)
+
+    return render_template('index.html', data=data, error=error, image_url=image_url, pred_str=pred_str, pred_pct=pred_pct)
 
 @app.route('/result', methods=['POST'])
 def result():

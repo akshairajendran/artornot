@@ -3,3 +3,4 @@ pillow==5.4.0
 requests==2.21.0
 gunicorn==19.9.0
 fastai
+path.py
