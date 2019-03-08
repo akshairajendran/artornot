@@ -22,20 +22,10 @@
                     <button type="submit" class="btn">Go</button>
                 </form>
             </div>
-            <div class="maintext col-md-3">
-                <h4>Supported artists:</h4>
-                {% for artist in artists %}
-                    <p>{{ artist }}<p>
-                {% endfor %}
-                <br><br>
-                <p>Please submit a link to an image by one of the currently supported artists. Submitting
-                   a link by an artist not currently supported will result in an erroneous result.
-                </p>
-            </div>
         </div>
         <br><br>
         <div class="row">
-            <div class="maintext col-md-5" id="image-render">
+            <div class="maintext col-md-8" id="image-render">
                 {% if error %}
                     <p>Got error, please check URL and try again</p>
                 {% else %}
@@ -45,6 +35,16 @@
                         <p>There is a {{ pred_pct }}% chance that is by {{ pred_str }}<p>
                     {% endif %}
                 {% endif %}
+            </div>
+            <div class="maintext col-md-3">
+                <h4>Supported artists:</h4>
+                {% for artist in artists %}
+                    <p>{{ artist }}<p>
+                {% endfor %}
+                <br><br>
+                <p>Please submit a link to an image by one of the currently supported artists. Submitting
+                   a link by an artist not currently supported will result in an erroneous result.
+                </p>
             </div>
         </div>
 
